@@ -15,7 +15,8 @@ export default function PostForm({ post }) {
         status: post?.status || "active",
       },
     });
-  const { userData } = useSelector((state) => state.UserDate);
+  const { userData } = useSelector((state) => state);
+  console.log(userData);
   const submit = async (data) => {
     if (post) {
       const file = data.FeatureImage[0]

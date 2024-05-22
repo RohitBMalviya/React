@@ -10,10 +10,11 @@ export class AuthService {
     this.client
       .setEndpoint(conf.appwriteUrl)
       .setProject(conf.appwriteProjectID);
+
     this.account = new Account(this.client);
   }
 
-  async createAccount({ email, password, name }) {
+  async createAccount({ name, email, password }) {
     try {
       const userAccount = await this.account.create(
         ID.unique(),
@@ -21,6 +22,7 @@ export class AuthService {
         password,
         name
       );
+      console.log("userAccount", userAccount);
       if (userAccount) {
         this.login({ email, password });
       } else {
@@ -33,7 +35,7 @@ export class AuthService {
 
   async login({ email, password }) {
     try {
-      return await this.account.createEmailSession(email, password);
+      return await this.account.createEmailPasswordSession(email, password);
     } catch (error) {
       console.log("Error", error);
     }

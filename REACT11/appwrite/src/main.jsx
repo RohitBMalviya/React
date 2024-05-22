@@ -40,7 +40,7 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path="/allPost"
+        path="/allposts"
         element={
           <AuthLayout authentication>
             <AllPost />
@@ -48,7 +48,7 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path="/editPost/:slug"
+        path="/editpost/:slug"
         element={
           <AuthLayout authentication>
             <EditPost />
@@ -56,7 +56,7 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path="/addPost"
+        path="/addpost"
         element={
           <AuthLayout authentication>
             <AddPost />

@@ -12,11 +12,12 @@ export default function SignUp() {
   const [error, setError] = useState("");
   const { register, handleSubmit } = useForm();
 
-  const signUpSubmit = async () => {
+  const signUpSubmit = async (data) => {
     setError("");
     try {
-      const userDate = await authService.createAccount(data);
-      if (userDate) {
+      const createUserData = await authService.createAccount(data);
+      console.log(createUserData);
+      if (createUserData) {
         const userData = await authService.getCurrentUser();
         if (userData) {
           dispatch(login(userData));
