@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, matchPath, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../store/Features/authSlice.js";
 import { Button, Input, Logo } from "../index.jsx";
 import authService from "../../appwrite/auth.js";
@@ -15,6 +15,7 @@ export default function Login() {
     setError("");
     try {
       const session = await authService.login(data);
+      console.log(session);
       if (session) {
         const userData = await authService.getCurrentUser();
         if (userData) {

@@ -10,13 +10,60 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Login, SignUp } from "./components/index.jsx";
 
+import Home from "./pages/home.jsx";
+import Login from "./pages/login.jsx";
+import SignUp from "./pages/signUp.jsx";
+import AllPost from "./pages/allPost.jsx";
+import EditPost from "./pages/editPost.jsx";
+import Post from "./pages/post.jsx";
+import AddPost from "./pages/addPost.jsx";
+import { AuthLayout } from "./components/index.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
+      <Route path="/home" element={<Home />} />
+      <Route
+        path="/login"
+        element={
+          <AuthLayout authentication={false}>
+            <Login />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <AuthLayout authentication={false}>
+            <SignUp />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path="/allPost"
+        element={
+          <AuthLayout authentication>
+            <AllPost />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path="/editPost/:slug"
+        element={
+          <AuthLayout authentication>
+            <EditPost />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path="/addPost"
+        element={
+          <AuthLayout authentication>
+            <AddPost />
+          </AuthLayout>
+        }
+      />
+      <Route path="/post/:slug" element={<Post />} />
     </Route>
   )
 );

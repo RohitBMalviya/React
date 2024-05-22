@@ -13,6 +13,7 @@ export default function AuthLayout({ children, authentication = false }) {
     } else if (!authentication && authStatus !== authentication) {
       navigate("/");
     }
+    setLoader(false);
   }, [authStatus, navigate, authentication]);
   return loader ? <h1>Loading...</h1> : <>{children}</>;
 }
