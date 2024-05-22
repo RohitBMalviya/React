@@ -22,7 +22,7 @@ export class AuthService {
         password,
         name
       );
-      console.log("userAccount", userAccount);
+
       if (userAccount) {
         this.login({ email, password });
       } else {
